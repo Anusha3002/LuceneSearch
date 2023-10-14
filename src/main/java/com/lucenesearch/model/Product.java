@@ -5,7 +5,7 @@ import java.util.List;
 // This include fields that correspond to the JSON document's structure.
 
 public class Product {
-    private int id;
+    private Long id;
     private String name;
     private String code;
     private String description;
@@ -27,11 +27,11 @@ public class Product {
     // I have to yet generate Getters and setters
 
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -51,6 +51,118 @@ public class Product {
         this.code = code;
     }
 
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public Brand getBrand() {
+        return brand;
+    }
+
+    public void setBrand(Brand brand) {
+        this.brand = brand;
+    }
+
+    public List<Model> getModels() {
+        return models;
+    }
+
+    public void setModels(List<Model> models) {
+        this.models = models;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
+    public boolean isGstIncluded() {
+        return gstIncluded;
+    }
+
+    public void setGstIncluded(boolean gstIncluded) {
+        this.gstIncluded = gstIncluded;
+    }
+
+    public Media getMedia() {
+        return media;
+    }
+
+    public void setMedia(Media media) {
+        this.media = media;
+    }
+
+    public String getCreated() {
+        return created;
+    }
+
+    public void setCreated(String created) {
+        this.created = created;
+    }
+
+    public String getUpdated() {
+        return updated;
+    }
+
+    public void setUpdated(String updated) {
+        this.updated = updated;
+    }
+
+    public String getCreatedby() {
+        return createdby;
+    }
+
+    public void setCreatedby(String createdby) {
+        this.createdby = createdby;
+    }
+
+    public String getUpdatedby() {
+        return updatedby;
+    }
+
+    public void setUpdatedby(String updatedby) {
+        this.updatedby = updatedby;
+    }
+
+    public double getRate() {
+        return rate;
+    }
+
+    public void setRate(double rate) {
+        this.rate = rate;
+    }
+
+    public double getGst() {
+        return gst;
+    }
+
+    public void setGst(double gst) {
+        this.gst = gst;
+    }
+
+    public double getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(double discount) {
+        this.discount = discount;
+    }
+
+    public double getRating() {
+        return rating;
+    }
+
+    public void setRating(double rating) {
+        this.rating = rating;
+    }
+
     public String getDescription() {
         return description;
     }
@@ -60,54 +172,12 @@ public class Product {
     }
 
 
-    public static class Category {
-        private String name;
-        private boolean status;
-        private int id;
 
-        // Getters and setters
-        // ...
-    }
 
-    public static class Brand {
-        private String name;
-        private String createdby;
-        private String updatedby;
-        private boolean status;
-        private boolean visibleOnDashboard;
-        private Media media;
-        private int id;
 
-        // Getters and setters
-        // ...
-    }
 
-    public static class Model {
-        private int id;
-        private String name;
-        private String variant;
-        private boolean status;
-        private Media media;
-        private Brand brand;
-        private String created;
-        private String updated;
-        private String createdby;
-        private String updatedby;
 
-        // Getters and setters
-        // ...
-    }
 
-    public static class Media {
-        private int id;
-        private String name;
-        private String fileType;
-        private String imgUrl;
-        private int type;
-
-        // Getters and setters
-        // ...
-    }
 
     @Override
     public String toString() {
