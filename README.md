@@ -22,7 +22,7 @@ You may also need lucene-analyzers-common and lucene-queryparser.
 <dependency>
     <groupId>org.apache.lucene</groupId>
     <artifactId>lucene-analyzers-common</artifactId>
-    <version>8.10.1</version>
+    <version>9.8.1</version>
 </dependency>
 <dependency>
     <groupId>org.apache.lucene</groupId>
