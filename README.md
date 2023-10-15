@@ -31,7 +31,7 @@ You may also need lucene-analyzers-common and lucene-queryparser.
 </dependency>
 
 
-# Lucene : Searching the already indexed documents and different criteria
+# Searching documents: BuildQuery
 
 <h3>Query Parsing logic</h3>
 
