@@ -29,3 +29,49 @@ You may also need lucene-analyzers-common and lucene-queryparser.
     <artifactId>lucene-queryparser</artifactId>
     <version>8.10.1</version>
 </dependency>
+
+
+# Lucene : Searching the already indexed documents and different criteria
+Lucene Document:
+
+# Query Parsing logic
+
+https://lucene.apache.org/core/2_9_4/queryparsersyntax.html#Overview
+
+
+#. Available Type of query in lucene
+
+BooleanQuery
+ConstantScoreQuery
+CustomScoreQuery
+DisjunctionMaxQuery
+FilteredQuery
+MatchAllDocsQuery
+MultiPhraseQuery
+MultiTermQuery
+PhraseQuery
+RangeQuery
+SpanQuery
+TermQuery
+ValueSourceQuery
+
+# BooleanQuery is most important and it follows, AND, OR, MUST, MUST_NOT and SHOULD
+
+BooleanQuery can be created using other other type of query and BooleanQuery itself
+
+
+You can view this in details here
+
+https://riptutorial.com/lucene/example/19933/booleanquery
+
+# Example Boolean Query
+
+String str = "foo bar";
+String id = "123456";
+BooleanQuery bq = new BooleanQuery();
+Query query = qp.parse(str);
+bq.add(query, BooleanClause.Occur.MUST);
+bq.add(new TermQuery(new Term("id", id), BooleanClause.Occur.MUST_NOT);
+
+
+
