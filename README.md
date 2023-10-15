@@ -32,9 +32,8 @@ You may also need lucene-analyzers-common and lucene-queryparser.
 
 
 # Lucene : Searching the already indexed documents and different criteria
-Lucene Document:
 
-# Query Parsing logic
+<h3>Query Parsing logic</h3>
 
 https://lucene.apache.org/core/2_9_4/queryparsersyntax.html#Overview
 
