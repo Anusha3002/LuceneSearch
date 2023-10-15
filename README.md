@@ -38,23 +38,25 @@ You may also need lucene-analyzers-common and lucene-queryparser.
 https://lucene.apache.org/core/2_9_4/queryparsersyntax.html#Overview
 
 
-#. Available Type of query in lucene
+<h3>Available Type of query in lucene</h3>
 
-BooleanQuery
-ConstantScoreQuery
-CustomScoreQuery
-DisjunctionMaxQuery
-FilteredQuery
-MatchAllDocsQuery
-MultiPhraseQuery
-MultiTermQuery
-PhraseQuery
-RangeQuery
-SpanQuery
-TermQuery
-ValueSourceQuery
+<ul>
+<li>BooleanQuery</li>
+    <li>ConstantScoreQuery</li>
+    <li>CustomScoreQuery</li>
+    <li>DisjunctionMaxQuery</li>
+    <li>FilteredQuery</li>
+    <li>MatchAllDocsQuery</li>
+    <li>MultiPhraseQuery</li>
+    <li>MultiTermQuery</li>
+    <li>PhraseQuery</li>
+    <li>RangeQuery</li>
+    <li>SpanQuery</li>
+    <li>TermQuery</li>
+    <li>ValueSourceQuery</li>
+</ul>
 
-# BooleanQuery is most important and it follows, AND, OR, MUST, MUST_NOT and SHOULD
+<h3>BooleanQuery is most important and it follows, AND, OR, MUST, MUST_NOT and SHOULD </h3>
 
 BooleanQuery can be created using other other type of query and BooleanQuery itself
 
@@ -63,14 +65,14 @@ You can view this in details here
 
 https://riptutorial.com/lucene/example/19933/booleanquery
 
-# Example Boolean Query
-
-String str = "foo bar";
-String id = "123456";
-BooleanQuery bq = new BooleanQuery();
-Query query = qp.parse(str);
-bq.add(query, BooleanClause.Occur.MUST);
-bq.add(new TermQuery(new Term("id", id), BooleanClause.Occur.MUST_NOT);
-
+<h3>Example Boolean Query</h3>
+<p>
+String str = "foo bar"; <br/>
+String id = "123456";<br/>
+BooleanQuery bq = new BooleanQuery();<br/>
+Query query = qp.parse(str);<br/>
+bq.add(query, BooleanClause.Occur.MUST);<br/>
+bq.add(new TermQuery(new Term("id", id), BooleanClause.Occur.MUST_NOT);<br/>
+</p>
 
 
