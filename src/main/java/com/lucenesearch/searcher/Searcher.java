@@ -7,10 +7,7 @@ import org.apache.lucene.index.DirectoryReader;
 import org.apache.lucene.index.IndexReader;
 import org.apache.lucene.queryparser.classic.ParseException;
 import org.apache.lucene.queryparser.classic.QueryParser;
-import org.apache.lucene.search.IndexSearcher;
-import org.apache.lucene.search.Query;
-import org.apache.lucene.search.ScoreDoc;
-import org.apache.lucene.search.TopDocs;
+import org.apache.lucene.search.*;
 import org.apache.lucene.store.FSDirectory;
 
 import java.io.IOException;
@@ -61,6 +58,37 @@ public class Searcher {
             //We fetch the complete document from index via its name
             //...
            // System.out.println(String.format("Found: %s", product));
+        }
+
+        return new SearcherResult(totalHits, matchingProducts);
+    }
+
+    public SearcherResult search(Query query, int numberOfDocumentsInOut, Sort sort) throws IOException, ParseException {
+        List<Document> matchingProducts = new ArrayList<>();
+        //We need to open an IndexReader to read the lucene index stored at given indexPath
+        IndexReader indexReader = DirectoryReader.open(FSDirectory.open(Paths.get(indexDir)));
+        //IndexSearcher will help us query the index
+        IndexSearcher indexSearcher = new IndexSearcher(indexReader);
+
+        //We perform the search and get top 10 search results.
+        TopDocs topDocs = indexSearcher.search(query, numberOfDocumentsInOut, sort);
+        //Print the count of matching documents.
+        long totalHits = topDocs.totalHits.value;
+        System.out.println(String.format("Found %d hits.", totalHits));
+
+        //Print the title field of each matching products
+        ScoreDoc[] results  = topDocs.scoreDocs;
+
+        for(ScoreDoc scoreDoc: results){
+            //Returns the id of the document matching the query
+            int docId = scoreDoc.doc;
+            //float score = scoreDoc.score;
+            //We fetch the complete document from index via its id
+            Document product = indexSearcher.doc(docId);
+            matchingProducts.add(product);
+            //We fetch the complete document from index via its name
+            //...
+            // System.out.println(String.format("Found: %s", product));
         }
 
         return new SearcherResult(totalHits, matchingProducts);

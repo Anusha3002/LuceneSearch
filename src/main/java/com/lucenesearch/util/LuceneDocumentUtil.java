@@ -50,7 +50,9 @@ public class LuceneDocumentUtil {
         List<Product> products = new ArrayList<>();
 
         for (Document document: documents) {
+            System.out.println(document);
             Product product = buildProduct(document);
+
             products.add(product);
         }
 
