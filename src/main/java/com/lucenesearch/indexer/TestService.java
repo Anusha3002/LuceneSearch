@@ -15,6 +15,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.lucenesearch.config.Constants.INDEX_DIR;
+
 public class TestService {
 
     public static void main(String args[]) {
@@ -22,7 +24,7 @@ public class TestService {
         HttpService httpService = new HttpService();
 
         try {
-            String indexDir = "/Users/anusha/lucene";
+            String indexDir = INDEX_DIR;
             String res = httpService.get("https://pbapps.in/api/v2/sales/parts");
             //System.out.println(res);
 

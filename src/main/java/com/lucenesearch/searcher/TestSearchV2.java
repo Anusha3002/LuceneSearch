@@ -8,6 +8,7 @@ import org.apache.lucene.index.Term;
 import org.apache.lucene.queryparser.classic.ParseException;
 import org.apache.lucene.queryparser.classic.QueryParser;
 import org.apache.lucene.search.*;
+import static com.lucenesearch.config.Constants.INDEX_DIR;
 
 import java.util.List;
 
@@ -19,7 +20,7 @@ public class TestSearchV2 {
         try {
             //testDefault();
             // index dir
-            String indexDir = "/Users/anusha/lucene";
+            String indexDir = INDEX_DIR;
             // create a query object
             Query query = buildBooleanQuery();
 
@@ -53,7 +54,7 @@ public class TestSearchV2 {
     public static void testDefault() {
         try {
             // index dir
-            String indexDir = "/Users/anusha/lucene";
+            String indexDir = INDEX_DIR;
             // create a query object
             Query query = buildDefault("a*");
 
@@ -108,7 +109,7 @@ public class TestSearchV2 {
         BooleanQuery query = new BooleanQuery.Builder()
                 .add(query1, BooleanClause.Occur.SHOULD)
                 .add(query2, BooleanClause.Occur.SHOULD)
-                //.add(query3, BooleanClause.Occur.SHOULD)
+                .add(query3, BooleanClause.Occur.SHOULD)
                 .setMinimumNumberShouldMatch(1)
 
                 .build();
