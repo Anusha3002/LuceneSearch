@@ -6,6 +6,7 @@ import com.lucenesearch.searcher.Searcher;
 import com.lucenesearch.searcher.SearcherResult;
 import com.lucenesearch.util.LuceneDocumentUtil;
 import org.apache.lucene.queryparser.classic.ParseException;
+import org.pabay.search.indexhunt.lucene.model.IndexDto;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -17,13 +18,22 @@ import static com.lucenesearch.config.Constants.INDEX_DIR;
 @Service
 public class SearchService {
 
-    public List<String> search(String query) {
+    final IndexService indexService;
 
-        String indexDir = INDEX_DIR;
+    public SearchService(IndexService indexService) {
+        this.indexService = indexService;
+    }
 
-        Searcher s = new Searcher(indexDir);
+
+    public List<String> search(String indexId, String query) {
 
         try {
+            IndexDto indexDto = indexService.get(indexId);
+
+            System.out.println(indexDto);
+            String indexDir = INDEX_DIR + "/"+indexDto.getPath();
+
+            Searcher s = new Searcher(indexDir);
             // get the searched document
             SearcherResult result = s.search(query);
             List<String> results = new ArrayList<>();
