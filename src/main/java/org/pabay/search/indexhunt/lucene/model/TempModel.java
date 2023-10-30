@@ -1,6 +1,6 @@
 package org.pabay.search.indexhunt.lucene.model;
 
-
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -8,9 +8,8 @@ import lombok.ToString;
 @Setter
 @Getter
 @ToString
-public class IndexDto {
+@Builder
+public class TempModel {
     private String id;
-    private String name;
-    private String path;
-    private String autocompleteLocation;
+    private String description;
 }

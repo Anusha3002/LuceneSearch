@@ -4,6 +4,7 @@ package org.pabay.search.indexhunt.lucene.service;
 import org.hibernate.annotations.NotFound;
 import org.pabay.search.indexhunt.lucene.exception.NotFundException;
 import org.pabay.search.indexhunt.lucene.model.IndexDto;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
@@ -20,5 +21,5 @@ public interface IndexService {
 
     public IndexDto get(String id);
 
-    public List<IndexDto> getAll();
+    public List<IndexDto> getAll(Pageable pageable, String q);
 }

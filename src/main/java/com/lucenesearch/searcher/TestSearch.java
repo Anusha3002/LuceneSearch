@@ -5,6 +5,7 @@ import com.lucenesearch.util.LuceneDocumentUtil;
 import org.apache.lucene.queryparser.classic.ParseException;
 
 import java.io.IOException;
+import java.net.URLDecoder;
 import java.util.List;
 
 import static com.lucenesearch.config.Constants.INDEX_DIR;
@@ -18,6 +19,7 @@ public class TestSearch {
         Searcher s = new Searcher(indexDir);
 
         try {
+            System.out.println(URLDecoder.decode("Reference&32; &#35;18&#46;9bf8dal7&#46;1697554334&# 46;171480b0"));
             // get the searched document
             SearcherResult result = s.search("a*");
 

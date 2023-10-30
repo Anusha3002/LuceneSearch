@@ -20,6 +20,12 @@ public class Index {
     @Column(name="path",unique = true, nullable = false)
     private String path;
 
+    /**
+     * Location where indexes are stored
+     */
+    @Column(name="autocomplete_location",unique = true, nullable = false)
+    private String autoCompleteLocation;
+
     public String getId() {
         return id;
     }
@@ -42,5 +48,13 @@ public class Index {
 
     public void setPath(String path) {
         this.path = path;
+    }
+
+    public String getAutoCompleteLocation() {
+        return autoCompleteLocation;
+    }
+
+    public void setAutoCompleteLocation(String autoCompleteLocation) {
+        this.autoCompleteLocation = autoCompleteLocation;
     }
 }

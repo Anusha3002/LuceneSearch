@@ -3,6 +3,9 @@ package org.pabay.search.indexhunt.lucene.controller;
 
 import org.pabay.search.indexhunt.lucene.model.IndexDto;
 import org.pabay.search.indexhunt.lucene.service.IndexService;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -31,9 +34,34 @@ public class IndexController {
         return indexService.get(id);
     }
 
+    /**
+     * Really speaking.. this response should be like below
+     * {
+     * "hasMore" : true,
+     * "pageSize" : 15,
+     * "pageNo" : 1,
+     * "totalItems"  :300,
+     * "items" : []
+     * }
+     * @param pageNo
+     * @param pageSize
+     * @param sortBy
+     * @param orderBy
+     * @param query
+     * @return
+     */
+
     @GetMapping("/indexes")
-    public ResponseEntity<List<IndexDto>> getAll() {
-        List<IndexDto> indexes = indexService.getAll();
+    public ResponseEntity<List<IndexDto>> getAll(
+            @RequestParam(name="pageNo", defaultValue = "0") Integer pageNo,
+            @RequestParam(name="pageSize", defaultValue = "15") Integer pageSize,
+            @RequestParam(name="sortBy", defaultValue = "id") String sortBy,
+            @RequestParam(name="order", defaultValue = "desc") String orderBy,
+            @RequestParam(name="q", required = false) String query
+            ) {
+
+        Pageable pageable = PageRequest.of(pageNo, pageSize, Sort.by(Sort.Direction.fromString(orderBy),sortBy));
+        List<IndexDto> indexes = indexService.getAll(pageable, query);
         return new ResponseEntity<>(indexes, HttpStatus.OK);
     }
 
