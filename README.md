@@ -5,9 +5,11 @@ Lucene is widely used as a standard foundation for production search application
 
 This Project uses:
 
-1. Oracle JDK 11
+1. Oracle JDK 17
 2. Lucene 9.8.1
 3. Installation
+4. Springboot
+5. Planning to add vector db
 
 The easiest way to use Lucene in your project is to import it using Maven. You need to at least import lucene-core (just pasting the following to your pom.xml's dependencies).
 
