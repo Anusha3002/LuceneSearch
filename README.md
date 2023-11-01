@@ -9,8 +9,9 @@ This Project uses:
 2. Lucene 9.8.1
 3. Installation
 4. Springboot
-5. Planning to add vector db
-
+5. Planning to add vector db (Pinecone) 
++ Semantic Search
+  
 The easiest way to use Lucene in your project is to import it using Maven. You need to at least import lucene-core (just pasting the following to your pom.xml's dependencies).
 
 <dependency>
